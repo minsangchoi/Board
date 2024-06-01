@@ -15,7 +15,7 @@ public class Board extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
-    private int idx; //게시판 키값
+    private Long idx; //게시판 키값
 
     private String title; // 제목
     private String content; // 내용
