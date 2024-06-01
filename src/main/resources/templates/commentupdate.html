@@ -11,16 +11,12 @@
 <div class="container">
     <!-- Post Creation Form Section -->
     <div class="main mt-4">
-        <h3>게시물 수정</h3>
-        <form method="post">
-            <input type="hidden" name="idx" id="idx" th:value="${board.idx}">
+        <h3>댓글 수정</h3>
+        <form th:action="@{/board/comment/commentupdate/{id}/{idx} (id=${comment.id},idx=${comment.board.idx})}" method="post">
+
             <div class="form-group">
-                <label for="title">제목 :</label>
-                <input type="text" class="form-control" id="title" name="title" th:value="${board.title}">
-            </div>
-            <div class="form-group">
-                <label for="content">내용 :</label>
-                <textarea class="form-control" id="content" name="content" rows="5"  th:text="${board.content}"></textarea>
+                <label for="comment">내용 :</label>
+                <textarea class="form-control" id="comment" name="comment" rows="5"  th:text="${comment.comment}"></textarea>
             </div>
             <button type="submit" class="btn btn-primary mt-3">수정</button>
             <button type="button" class="btn btn-secondary mt-3" onclick="javascript:history.back();">목록</button>

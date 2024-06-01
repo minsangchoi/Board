@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <meta charset="UTF-8">
     <title>Title</title>
-
     <style>
-        .main {
-            width: 500px;
-            height: 700px;
-            margin: auto;
+        .button-group {
+            margin-top: 10px;
         }
 
-        label {
-            display: inline-block;
-            width: 60px;
+        .button-group .btn {
+            margin-right: 5px;
         }
 
-        input {
-            display: inline-block;
-            width: 400px;
-            margin-bottom: 10px;
-        }
-
-        textarea {
-            width: 470px;
-            height: 400px;
-        }
-
-        #update {
-            text-align: center;
-            display: inline-block;
-            border: 1px solid;
-            width: 80px;
-            height: 30px;
-            background-color: moccasin;
-            text-decoration: none;
-            line-height: 30px;
-        }
-
-        #delete {
-            text-align: center;
-            display: inline-block;
-            border: 1px solid;
-            width: 80px;
-            height: 30px;
-            background-color: lightpink;
-            text-decoration: none;
-            line-height: 30px;
+        .comment-button {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-<div class="main">
-    <label for="writer">작성자 :</label>
-    <input type="text" name="writer" id="writer" th:value="${board.writer}" disabled>
-    <label for="title">제목 :</label>
-    <input type="text" name="title" id="title" th:value="${board.title}" disabled>
-    <label for="content">내용 :</label>
-    <textarea name="content" id="content" th:text="${board.content}" disabled></textarea>
-    <a th:href="@{/board/update/{idx}(idx=${board.idx})}" id="update">수정</a>
-    <a th:href="@{/board/delete/{idx}(idx=${board.idx})}" id="delete">삭제</a>
+<div class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-3">게시글</h6>
+        <div>
+            <div class="mb-3">
+                <strong class="d-block text-dark">작성자</strong>
+                <input type="text" class="form-control" th:value="${board.member.name}" disabled>
+            </div>
+            <div class="mb-3">
+                <strong class="d-block text-dark">제목</strong>
+                <input type="text" class="form-control" th:value="${board.title}" disabled>
+            </div>
+            <div class="mb-3">
+                <strong class="d-block text-dark">내용</strong>
+                <textarea class="form-control" rows="4" th:text="${board.content}" disabled></textarea>
+            </div>
+            <div class="button-group">
+                <a th:href="@{/board/update/{idx}(idx=${board.idx})}" class="btn btn-warning">수정</a>
+                <a th:href="@{/board/delete/{idx}(idx=${board.idx})}" class="btn btn-danger">삭제</a>
+                <a href="/board/list" class="btn btn-secondary">목록</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-3">댓글</h6>
+        <div th:each="comment : ${comment}" class="mb-3 pb-3 border-bottom">
+            <div >
+                <div class="flex-grow-1">
+                    <div class="mb-3">
+                        <strong class="d-block text-dark">작성자</strong>
+                        <input type="text" class="form-control" th:value="${comment.member.name}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="d-block text-dark">내용</strong>
+                        <textarea class="form-control" rows="3" th:text="${comment.comment}" disabled></textarea>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <a th:href="@{/board/comment/commentupdate/{id}/{idx} (id=${comment.id},idx=${comment.board.idx})}" class="btn btn-warning">수정</a>
+                    <form th:action="@{/board/comment/delete/{id}/{idx} (id=${comment.id},idx=${comment.board.idx})}" th:method="post" style="display: contents">
+                        <input type="submit" class="btn btn-danger" value="삭제">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-3">댓글 작성</h6>
+        <form th:action="@{/board/comment/register/{idx}(idx=${board.idx})}" method="post">
+            <div class="form-group">
+                <label for="comment">내용</label>
+                <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary comment-button">댓글 작성</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
