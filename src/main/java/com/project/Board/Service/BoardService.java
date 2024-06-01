@@ -1,14 +1,10 @@
-package com.querydsl.Board.Service;
+package com.project.Board.Service;
 
-import com.querydsl.Board.domain.Board;
-import com.querydsl.Board.dto.BoardMemberDto;
-import com.querydsl.Board.repository.BoardRepository;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
+import com.project.Board.domain.Board;
+import com.project.Board.dto.BoardMemberDto;
+import com.project.Board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
