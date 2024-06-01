@@ -1,4 +1,4 @@
-package com.querydsl.Board.dto;
+package com.project.Board.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;

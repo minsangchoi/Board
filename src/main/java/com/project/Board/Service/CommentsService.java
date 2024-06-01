@@ -1,18 +1,12 @@
-package com.querydsl.Board.Service;
+package com.project.Board.Service;
 
-import com.querydsl.Board.domain.Board;
-import com.querydsl.Board.domain.Comments;
-import com.querydsl.Board.domain.Member;
-import com.querydsl.Board.repository.CommentsRepository;
-import com.querydsl.Board.repository.MemberRepository;
-import jakarta.servlet.http.HttpSession;
+import com.project.Board.domain.Comments;
+import com.project.Board.repository.CommentsRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

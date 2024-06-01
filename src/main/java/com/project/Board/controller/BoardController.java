@@ -1,13 +1,13 @@
-package com.querydsl.Board.controller;
+package com.project.Board.controller;
 
-import com.querydsl.Board.Service.BoardService;
-import com.querydsl.Board.Service.CommentsService;
-import com.querydsl.Board.domain.Board;
-import com.querydsl.Board.domain.Comments;
-import com.querydsl.Board.domain.Member;
-import com.querydsl.Board.dto.BoardMemberDto;
-import com.querydsl.Board.repository.BoardRepository;
-import com.querydsl.Board.repository.MemberRepository;
+import com.project.Board.Service.BoardService;
+import com.project.Board.Service.CommentsService;
+import com.project.Board.domain.Board;
+import com.project.Board.domain.Comments;
+import com.project.Board.domain.Member;
+import com.project.Board.dto.BoardMemberDto;
+import com.project.Board.repository.BoardRepository;
+import com.project.Board.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 

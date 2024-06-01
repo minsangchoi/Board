@@ -1,4 +1,4 @@
-package com.querydsl.Board.domain;
+package com.project.Board.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

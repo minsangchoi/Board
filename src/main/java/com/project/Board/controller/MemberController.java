@@ -1,14 +1,10 @@
-package com.querydsl.Board.controller;
+package com.project.Board.controller;
 
-import com.querydsl.Board.Service.BoardService;
-import com.querydsl.Board.Service.MemberService;
-import com.querydsl.Board.domain.Board;
-import com.querydsl.Board.domain.Member;
+import com.project.Board.domain.Member;
+import com.project.Board.Service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller

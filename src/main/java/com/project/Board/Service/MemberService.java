@@ -1,18 +1,11 @@
-package com.querydsl.Board.Service;
+package com.project.Board.Service;
 
-import com.querydsl.Board.domain.Board;
-import com.querydsl.Board.domain.Member;
-import com.querydsl.Board.repository.BoardRepository;
-import com.querydsl.Board.repository.MemberRepository;
+import com.project.Board.domain.Member;
+import com.project.Board.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
