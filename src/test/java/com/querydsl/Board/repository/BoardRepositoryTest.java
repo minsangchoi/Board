@@ -1,6 +1,6 @@
 package com.querydsl.Board.repository;
 
-import com.querydsl.Board.entity.Board;
+import com.querydsl.Board.domain.Board;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

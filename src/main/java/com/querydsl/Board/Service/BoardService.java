@@ -1,10 +1,15 @@
 package com.querydsl.Board.Service;
 
-import com.querydsl.Board.entity.Board;
+import com.querydsl.Board.domain.Board;
+import com.querydsl.Board.dto.BoardMemberDto;
 import com.querydsl.Board.repository.BoardRepository;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -15,28 +20,38 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+    //게시글저장
     public void register(Board board) {
         boardRepository.save(board);
     }
-
+    //게시글 리스트조회
     public List<Board> list() {
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "idx"));
     }
-
+    //게시글 상세 조회 및 조회수 증가
     public Board detail(int idx) {
-        return boardRepository.findById(idx).orElse(null);
+        Board board = boardRepository.searchDetailBoard(idx);
+        increaseViewCount(board);
+        return board;
     }
-
+    //조회수증가
+    private void increaseViewCount(Board board) {
+        board.increaseViewCount();
+        boardRepository.save(board);
+    }
+    //게시글수정
     public void update(Board board) {
         boardRepository.save(board);
     }
-
+    //게시글삭제
     public void delete(int idx) {
         boardRepository.deleteById(idx);
     }
 
-    public Page<Board> list(int page) {
-        return boardRepository.findAll(PageRequest.of(page,5,Sort.by(Sort.Direction.DESC, "idx")));
+    //게시글 리스트 페이징조회
+    public Page<BoardMemberDto> list(Pageable pageable) {
+
+        return boardRepository.searchPageingBoard(pageable);
     }
 
 }
