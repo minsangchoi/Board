@@ -14,16 +14,20 @@ public class Board extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_id")
+    @Column(name = "board_id" ,nullable = false)
     private Long idx; //게시판 키값
 
+    @Column(name = "title" ,nullable = false)
     private String title; // 제목
+    @Column(name = "content" ,nullable = false)
     private String content; // 내용
+    @Column(name = "writer" ,nullable = false)
     private String writer; // 작성자
+    @Column(name = "view" ,nullable = false)
     private int view; // 조회수
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id",nullable = false)
     private Member member; // 회원테이블 조인
 
     public Board(String title, String content, String writer) {
