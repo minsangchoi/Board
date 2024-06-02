@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseTimeEntity {
 
-    @Column(name = "created_date")
+    @Column(name = "created_date" ,nullable = false)
     public LocalDateTime createdDate;   // 생성일시
 
     @Column(name = "modified_date")
