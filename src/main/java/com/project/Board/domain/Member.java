@@ -15,19 +15,19 @@ public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
+    @Column(name = "member_id" ,nullable = false)
     private Long id;             // 회원 번호 (PK)
 
-    @Column(name = "login_id")
+    @Column(name = "login_id" ,nullable = false)
     private String loginId;      // 로그인 ID
 
-    @Column(name = "password")
+    @Column(name = "password" ,nullable = false)
     private String password;     // 비밀번호
 
-    @Column(name = "name")
+    @Column(name = "name" ,nullable = false)
     private String name;         // 이름
 
-    @Column(name = "nickname")
+    @Column(name = "nickname",nullable = false)
     private String nickname;      // 닉네임
 
     @Column(name = "email")
